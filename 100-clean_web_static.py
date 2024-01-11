@@ -12,3 +12,9 @@ def do_clean(number=0):
 """
 Deletes out_of_date archives
 """
+  if int(number) < 2:
+    number = 1
+  else:
+    number = int(number)
+  with lcd('versions'):
+    local("ls -t | tail -n +{} | xargs rm -f".format(number + 1))
